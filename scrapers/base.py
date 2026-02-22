@@ -12,21 +12,28 @@ class BaseScraper(ABC):
     def enrich_and_notify(self, jobs):
         for job in jobs:
             try:
-                self.proposal_service.generate(job)
-                msg = f"""🎯 <b>فرصة جديدة من خمسات</b>
+                #self.proposal_service.generate(job)
+                msg = f"""🎯 <b>فرصة عمل جديده</b>
     
     <b>العنوان:</b> {job.title}
     🔗 <a href="{job.url}">فتح الوظيفة</a>
     
     <b>ملخص:</b>
-    <pre>{job.summary}</pre>
+    <pre>{job.description}</pre>"""
+                    #f"""🎯 <b>فرصة جديدة من خمسات</b>
     
-    <b>خطة العمل:</b>
-    <pre>{job.plan}</pre>
+    #<b>العنوان:</b> {job.title}
+    #🔗 <a href="{job.url}">فتح الوظيفة</a>
     
-    <b>البروبوزال:</b>
-    <pre>{job.proposal}</pre>
-    """
+    #<b>ملخص:</b>
+    #<pre>{job.summary}</pre>
+    
+    #<b>خطة العمل:</b>
+    #<pre>{job.plan}</pre>
+    
+    #<b>البروبوزال:</b>
+    #<pre>{job.proposal}</pre>
+    #"""
 
 
                 self.telegram.send(msg)
